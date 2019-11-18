@@ -5,7 +5,7 @@ const webpack = require("webpack");
 module.exports = {
   mode: "production",
   entry: {
-    app: "./src/index.js"
+    app: "./src/index.ts"
   },
 
   output: {
@@ -24,8 +24,16 @@ module.exports = {
             presets: ["env"]
           }
         }
+      },
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
       }
     ]
+  },
+    resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
   },
   optimization: {
     splitChunks: {
